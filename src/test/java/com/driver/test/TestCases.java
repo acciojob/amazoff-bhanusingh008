@@ -21,9 +21,13 @@ import java.util.List;
 @Ignore
 public class TestCases {
 
-    OrderController orderController = new OrderController();
+    OrderController orderController;
 
-    public void testAddOrderPartnerPair(Order order){
+    public void testOrderController(){
+        orderController = new OrderController();
+    }
+
+    public void testAddOrder(Order order){
 
         orderController.addOrder(order);
     }
@@ -47,3 +51,4 @@ public class TestCases {
 //        Error:    TestCases.testGetOrdersByPartnerId:239 » NullPointer
 //        Error:    TestCases.testGetPartnerById:142 » NullPointer
 //        Error:    TestCases.testOrderController:684 » NullPointer
+//TestCases.testAddOrder:25 » NullPointer
