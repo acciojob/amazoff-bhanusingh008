@@ -18,7 +18,6 @@ import java.util.List;
 
 @SpringBootTest(classes = Application.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Ignore
 public class TestCases {
 
     OrderController orderController;
