@@ -49,10 +49,16 @@ public class OrderRepository {
     }
 
     public Order getOrderById(String orderId) {
+        if(!orderDB.containsKey(orderId)){
+            return null;
+        }
         return orderDB.get(orderId);
     }
 
     public DeliveryPartner getPartnerById(String partnerId) {
+        if(!partnerDB.containsKey(partnerId)){
+            return null;
+        }
         return partnerDB.get(partnerId);
     }
 
@@ -64,6 +70,9 @@ public class OrderRepository {
     }
 
     public List<String> getOrdersByPartnerId(String partnerId) {
+        if(!partnerOrderDB.containsKey(partnerId)){
+            return null;
+        }
         return partnerOrderDB.get(partnerId);
     }
 
@@ -141,8 +150,9 @@ public class OrderRepository {
 
     public void deletePartnerById(String partnerId) {
 
-        partnerDB.remove(partnerId);
+        if(partnerDB.containsKey(partnerId)) partnerDB.remove(partnerId);
 
+        if(partnerOrderDB.containsKey(partnerId)){
         List<String> orders = partnerOrderDB.get(partnerId);
 
         partnerOrderDB.remove(partnerId);
@@ -150,6 +160,7 @@ public class OrderRepository {
         for(String order : orders){
 
             orderPartnerDB.remove(order);
+        }
         }
     }
 
